@@ -12,8 +12,25 @@
     <div>Flight Number: </div>
     <div><%= flight.flightNo %></div>
     <div>Departure Date: </div>
-    <div><%= flight.departs %></div>
+    <div><%= flight.departs.toUTCString() %></div>
+    <div>Destinations:</div>
+    <% flight.destinations.forEach(dest => { %>
+        <%= dest.airport %>
+    <% }) %> 
   </section>
+  <h2>Add a Destination</h2>
+  <form 
+    id="add-destination-to-destinations" 
+    action="/flights/<%= flight._id %>/destinations" 
+    method="post"
+  >
+    <select name="destinationId">
+      <% destinations.forEach(dest => { %>
+        <option value="<%= dest._id %>"><%= dest.airport %> </option>
+      <% }) %> 
+    </select>
+    <button type="submit">Add to Destinations</button>
+  </form>
   <h2>Make a Ticket</h2>
   <form 
     id="add-ticket-form"

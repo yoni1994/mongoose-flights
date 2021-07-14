@@ -17,3 +17,5 @@ router.get('/:id', flightsCtrl.show)
 router.post('/', flightsCtrl.create)
 
 router.post('/:id/tickets', flightsCtrl.createTicket)
+
+router.post('/:id/destinations', flightsCtrl.addToDestinations)
